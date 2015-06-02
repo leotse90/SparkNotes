@@ -9,14 +9,14 @@
 `val words = Array("one", "two", "two", "three", "three", "three")`  
 `val wordPairsRDD = sc.parallelize(words).map(word => (word, 1))`  
 
-`val wordCountsWithReduce = wordPairsRDD`
-  `.reduceByKey(_ + _)`
-  `.collect()`
+`val wordCountsWithReduce = wordPairsRDD`  
+&nbsp;&nbsp;&nbsp;&nbsp;`.reduceByKey(_ + _)`  
+&nbsp;&nbsp;&nbsp;&nbsp;`.collect()`  
 
-`val wordCountsWithGroup = wordPairsRDD`
-  `.groupByKey()`
-  `.map(t => (t._1, t._2.sum))`
-  `.collect()`
+`val wordCountsWithGroup = wordPairsRDD`  
+&nbsp;&nbsp;&nbsp;&nbsp;`.groupByKey()`  
+&nbsp;&nbsp;&nbsp;&nbsp;`.map(t => (t._1, t._2.sum))`  
+&nbsp;&nbsp;&nbsp;&nbsp;`.collect()`
 
 上面两个函数所得到的结果都是正确的，但是当数据集很大时，使用了`reduceByKey`的例子表现更佳。这是因为在shuffle输出的数据前，Spark会Combine每一个partition上具有相同key的输出结果。
 
