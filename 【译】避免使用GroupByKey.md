@@ -27,7 +27,7 @@
 
 另一方面，当调用`groupByKey`的时候，所有的键值对都会进行shuffle，这将增加很多无谓的数据进行网络传输。
 
-为了确定哪台机器将接受Shuffle后的键值对，Spark会针对该键值对数据的key调用一个分区函数。当某一台executor机器上的内存不足以保存过多的Shuffle后数据时，Spark就会溢写数据到磁盘上。然而，这种溢写磁盘会一次性将一个key的全部键值对数据写入磁盘，因此如果一个key拥有过多——多到内存放不下时，将会抛出Out Of Memory异常。这在之后发布的Spark中将会更加优雅地处理这种情况，使得这个job仍会继续运行，但是我们仍然需要避免（使用`reduceByKey`）。当Spark需要溢写磁盘的时候，它的性能将受到严重影响。
+为了确定哪台机器将接受Shuffle后的键值对，Spark会针对该键值对数据的key调用一个分区函数。当某一台executor机器上的内存不足以保存过多的Shuffle后数据时，Spark就会溢写数据到磁盘上。然而，这种溢写磁盘会一次性将一个key的全部键值对数据写入磁盘，因此如果一个key拥有过多键值对数据——多到内存放不下时，将会抛出Out Of Memory异常。这在之后发布的Spark中将会更加优雅地处理这种情况，使得这个job仍会继续运行，但是我们仍然需要避免（使用`reduceByKey`）。当Spark需要溢写磁盘的时候，它的性能将受到严重影响。
 
 ![GroupByKey](http://databricks.gitbooks.io/databricks-spark-knowledge-base/content/images/group_by.png)
 
