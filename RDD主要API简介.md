@@ -179,7 +179,7 @@ RDD作为Spark的核心概念，它的相关操作是Spark学习者常见常用�
 `[('a', 5), ('c', 2), ('b', 1)]`
 
 wordcount的即视感有木有！  
-这两者还是有区别的，实际操作中我么应该尽量避免使用`groupByKey()`，具体可参考[【译】避免使用GroupByKey](https://github.com/leotse90/SparkNotes/blob/master/%E3%80%90%E8%AF%91%E3%80%91%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8GroupByKey.md)。
+这两者还是有区别的，实际操作中我们应该尽量避免使用`groupByKey()`，具体可参考[【译】避免使用GroupByKey](https://github.com/leotse90/SparkNotes/blob/master/%E3%80%90%E8%AF%91%E3%80%91%E9%81%BF%E5%85%8D%E4%BD%BF%E7%94%A8GroupByKey.md)。
 
 ## Actions
 ### foreach(func)
