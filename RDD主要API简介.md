@@ -220,7 +220,7 @@ wordcount的即视感有木有！
 ### count()
 ### mean()
 ### variance()
-### stdev(), 
+### stdev()
 这一系列函数的作用很直观，分别是取RDD元素中最大值、最小值、求和、计数, 平均数，方差，标准偏差：
 
 `rdd = sc.parallelize([2, 4, 5, 7])`  
