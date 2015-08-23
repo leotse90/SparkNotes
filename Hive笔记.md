@@ -1,4 +1,4 @@
-＃Hive笔记
+# Hive笔记
 __整理:leotse__
 
 ### Hive的基本原理
