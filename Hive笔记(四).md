@@ -70,6 +70,6 @@ TEXTFILE：意味着所有字段都是使用字母、数字、字符编码，包
 3.**表重命名**:`ALTER TABLE table_1 RENAME TO table_2;`  
 **增加分区**:`ALTER TABLE table_1 ADD PARTITION ...;`  
 **删除分区**:`ALTER TABLE table_1 DROP IF EXISTS PARTITION(year=2011, month=4, day=12);`  
-**修改列信息*:`ALTER TABLE table_1 CHANGE COLUMN col1 INT;`   
+**修改列信息**:`ALTER TABLE table_1 CHANGE COLUMN col1 INT;`   
 **增加列**:`ALTER TABLE table_1 ADD COLUMN (col1 INT, col2 STRING);`  
 
