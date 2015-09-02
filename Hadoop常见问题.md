@@ -1,4 +1,4 @@
-# Hive常见问题
+# Hadoop常见问题
 __整理：LeoTse__
 
 ### MySQL字符集（一）
@@ -73,3 +73,37 @@ Hive 启动MR job后，长期未响应，查看JOB的状态发现：
 3.解决方案：  
 我们选择等待检查完毕，也可以使用以下命令直接解除安全模式：  
 `hadoop dfsadmin -safemode leave`  
+
+### Connection Refused
+1.问题：  
+`Application application_1441163257106_0002 failed 2 times due to Error launching appattempt_1441163257106_0002_000002. Got exception: java.net.ConnectException: Call From Master/172.16.10.42 to localhost:46940 failed on connection exception: java.net.ConnectException: 拒绝连接`
+
+2.原因：  
+查看这个异常，我们可以知道是因为连接不到Master的端口，具体可参看[这里](http://wiki.apache.org/hadoop/ConnectionRefused)。
+
+3.解决方案：  
+hosts配置问题，localhost:46940不能访问。注释掉/etc/hosts中的`IP localhost`。
+
+### ClusterID不一致
+1.问题：  
+`FATAL org.apache.hadoop.hdfs.server.datanode.DataNode: Initialization failed for Block pool <registering> (Datanode Uuid unassigned) service to Master/10.14.13.210:9000. Exiting.`  
+`java.io.IOException: Incompatible clusterIDs in /home/xiefeng/packages/hadoop-2.6.0/tmp/dfs/data: namenode clusterID = CID-3cab9049-42dd-4a70-8248-32c3cbeefaed; datanode clusterID = CID-f13dbf4f-7625-4a19-91ac-cac5fae58443`  
+	`at org.apache.hadoop.hdfs.server.datanode.DataStorage.doTransition(DataStorage.java:648)`  
+	`at org.apache.hadoop.hdfs.server.datanode.DataStorage.addStorageLocations(DataStorage.java:320)`  
+	`at org.apache.hadoop.hdfs.server.datanode.DataStorage.recoverTransitionRead(DataStorage.java:403)`  
+	`at org.apache.hadoop.hdfs.server.datanode.DataStorage.recoverTransitionRead(DataStorage.java:422)`  
+	`at org.apache.hadoop.hdfs.server.datanode.DataNode.initStorage(DataNode.java:1311)`  
+	`at org.apache.hadoop.hdfs.server.datanode.DataNode.initBlockPool(DataNode.java:1276)`  
+	`at org.apache.hadoop.hdfs.server.datanode.BPOfferService.verifyAndSetNamespaceInfo(BPOfferService.java:314)`  
+	`at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.connectToNNAndHandshake(BPServiceActor.java:220)`  
+	`at org.apache.hadoop.hdfs.server.datanode.BPServiceActor.run(BPServiceActor.java:828)`  
+	`at java.lang.Thread.run(Thread.java:745)`  
+
+2.原因：  
+datanode的clusterID 和 namenode的clusterID 不匹配。
+
+3.解决方案：  
+首先暂停服务；然后将namenode的VERSION的clusterID复制到datanode的VERSION中。  
+namenode的VERSION在/home/xiefeng/packages/hadoop-2.6.0/tmp/dfs/name目录下；  
+datanode的VERSION在/home/xiefeng/packages/hadoop-2.6.0/tmp/dfs/data目录下。
+
