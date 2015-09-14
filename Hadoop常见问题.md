@@ -107,3 +107,33 @@ datanode的clusterID 和 namenode的clusterID 不匹配。
 namenode的VERSION在/home/xiefeng/packages/hadoop-2.6.0/tmp/dfs/name目录下；  
 datanode的VERSION在/home/xiefeng/packages/hadoop-2.6.0/tmp/dfs/data目录下。
 
+### 
+1.问题：  
+执行Hive语句时，出现：  
+
+`Container launch failed for container_1442198264819_0004_02_000009 : org.apache.hadoop.yarn.exceptions.YarnException: Unauthorized request to start container. `  
+`This token is expired. current time is 1442227543906 found 1442199050655`  
+`Note: System times on machines may be out of sync. Check system time and time zones.`  
+`	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)`  
+`	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)`  
+`	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)`  
+`	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)`  
+`	at org.apache.hadoop.yarn.api.records.impl.pb.SerializedExceptionPBImpl.instantiateException(SerializedExceptionPBImpl.java:168)`  
+`	at org.apache.hadoop.yarn.api.records.impl.pb.SerializedExceptionPBImpl.deSerialize(SerializedExceptionPBImpl.java:106)`  
+`	at org.apache.hadoop.mapreduce.v2.app.launcher.ContainerLauncherImpl$Container.launch(ContainerLauncherImpl.java:155)`  
+`	at org.apache.hadoop.mapreduce.v2.app.launcher.ContainerLauncherImpl$EventProcessor.run(ContainerLauncherImpl.java:369)`  
+`	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)`  
+`	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)`  
+`	at java.lang.Thread.run(Thread.java:745)`  
+
+System times on machines may be out of sync. Check system time and time zones.
+
+2.原因：  
+namenode,datanode时间同步问题。
+
+3.解决方案：  
+同步一下服务器的时间。如下：  
+`ntpdate -u 210.72.145.44`  
+210.72.145.44为中国授时中心。
+
+
