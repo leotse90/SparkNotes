@@ -18,9 +18,9 @@ Hive查询耗时太长，一直都是大家吐槽的对象，在数据量大的�
 默认情况下这个设置为false，也就是说，Hive使用MR来执行其他的所有操作（区别上面介绍的两种）。
 
 我们来感受下，下面截图为没有使用本地模式时查询数据条目数：  
-![hive_local_mode_false](https://github.com/leotse90/SparkNotes/blob/master/images/hive_local_mode_before.png)  
+![hive_local_mode_false](https://github.com/leotse90/SparkNotes/blob/master/images/hive_local_mode_false.png)  
 我们看到这个简单的操作用了34.321s，一共也就192条数据，这个固然和机器有关，但是MR启动以及计算导致时间成本太高。我们在下面的示例里打开了本地模式：  
-![hive_local_mode_true](https://github.com/leotse90/SparkNotes/blob/master/images/hive_local_mode_after.png)  
+![hive_local_mode_true](https://github.com/leotse90/SparkNotes/blob/master/images/hive_local_mode_true.png)  
 1.322s!，我们看到耗时明显降低，这就是本地模式的威力。
 
 当然，使用本地模式也有一些条件：  
