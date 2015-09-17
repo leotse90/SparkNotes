@@ -29,3 +29,8 @@ Hive查询耗时太长，一直都是大家吐槽的对象，在数据量大的�
 3.Reducer的数量：Reducer数量必须是0或1；
 
 我们在使用Hive时，最好在$HOME/.hiverc配置文件中加入`set hive.exec.mode.local.auto=true;`设置。特别是当我们常常处理的数据量不大的时候！
+
+另：由于Hadoop运行的机器和Hive client运行的机器可能环境不一致，JVM版本的不同或者软件的libs不同会导致本地模式可能出现不可预期的错误。另外一点值得我们注意的是，本地模式运行在Hive Client上一个独立的子JVM上，如果你愿意，那么你可以通过`hive.mapred.local.mem`参数来设置该子JVM最大内存，默认情况下，这个参数的值为0，在这种情况下，Hive会让Hadoop决定子JVM的默认内存限制。
+
+参考：  
+[Hive GettingStarted](https://cwiki.apache.org/confluence/display/Hive/GettingStarted#GettingStarted-Hive,Map-ReduceandLocal-Mode)
