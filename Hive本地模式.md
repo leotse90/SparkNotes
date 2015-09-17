@@ -24,9 +24,9 @@ Hive查询耗时太长，一直都是大家吐槽的对象，在数据量大的�
 1.322s!，我们看到耗时明显降低，这就是本地模式的威力。
 
 当然，使用本地模式也有一些条件：  
-1.输入数据的size：我们用参数hive.exec.mode.local.auto.inputbytes.max来指定本地模式处理的最大输入数据，默认为128MB；  
-2.Mapper的数量：参数hive.exec.mode.local.auto.tasks.max指定了本地模式下Mapper的最大数量，默认为4；  
-3.Reducer的数量：Reducer数量必须是0或1；
+1.**输入数据的size**：我们用参数hive.exec.mode.local.auto.inputbytes.max来指定本地模式处理的最大输入数据，默认为128MB；  
+2.**Mapper的数量**：参数hive.exec.mode.local.auto.tasks.max指定了本地模式下Mapper的最大数量，默认为4；  
+3.**Reducer的数量**：Reducer数量必须是0或1；
 
 我们在使用Hive时，最好在$HOME/.hiverc配置文件中加入`set hive.exec.mode.local.auto=true;`设置。特别是当我们常常处理的数据量不大的时候！
 
