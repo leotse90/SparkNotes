@@ -1,7 +1,7 @@
 # Hive 本地模式
-__author:leotse__
+__by:leotse__
 
-### Local Mode
+
 我们都知道，Hive是通过将HiveQL转化为MR job进行数据查询和处理。当然，不是全部的HQL语句都需要转为MR，比如我们常见的：  
 `SELECT * FROM access_log;`  
 这时候，Hive Shell能很快地返回给我们结果，这是因为这里用到的是Hive的**本地模式**。  
