@@ -19,7 +19,7 @@ Fsimage是一个二进制文件，它记录了HDFS中所有文件和目录的元
 **namespaceID**：当前命名空间的ID，在NameNode的生命周期内保持不变，DataNode注册时，返回该ID作为其registrationID，每次和NameNode通信时都要检查，不认识的namespaceID拒绝连接；  
 **numFiles**：文件系统中的文件数；  
 **genStamp**：生成该fsimage文件的时间戳；  
-**path**：文件或者目录路径； 
+**path**：文件或者目录路径；  
 **replicas**：文件的副本数，目录的replicas为0；  
 **mtime**：修改时间；  
 **atime**：访问时间；  
