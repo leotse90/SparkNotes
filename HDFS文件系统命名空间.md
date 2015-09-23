@@ -2,7 +2,7 @@
 _整理:leotse_
 
 ### HDFS Namespace
-在HDFS中，我们知道NameNode负责管理文件系统的命名空间，那么NameNode到底怎么管理HDFS的命名空间，又有哪些内容需要管理呢？
+在HDFS中，我们知道NameNode负责管理文件系统的命名空间，那么NameNode到底怎么管理HDFS的命名空间，又有哪些内容需要管理呢？我们接下来将讨论到这两个问题。
 
 作为HDFS的Master，NameNode掌握着整个HDFS的文件目录树及其目录与文件，这些信息会以文件的形式永久地存储在本地磁盘。我们可以在$HADOOP_HOME/tmp/dfs/name/current下找到这些文件：fsimage以及edits。
 
