@@ -28,7 +28,7 @@ _整理：leotse_
 ### INNER JOIN
 INNER JOIN，又称内连接。是较为常见的一种JOIN操作：  
 **Input**: 表A、表B  
-**Condition**: 表A和表B中符合我们期望的，A.col = B.col   
+**Condition**: A.col = B.col   
 **Output**: 表A和表B中满足Condition的所有数据记录   
 **Example**:   
 `SELECT a.col1, a.col2, b.col2, b.col3`  
