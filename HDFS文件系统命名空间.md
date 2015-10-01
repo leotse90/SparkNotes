@@ -49,3 +49,5 @@ BlocksMap中保存了文件块block与DataNodes的映射信息以及DataNode与�
 
 ### Conclusion
 通过fsimage与blocksmap两种数据结构，NameNode就能建立起完整的命名空间信息以及文件块映射信息。在NameNode加载fsimage之后，BlocksMap中只有每个block到其所属的DataNode列表的对应关系信息还没建立，这个需要通过DataNode的blockReport来收集构建，当所有的DataNode上报给NameNode的blockReport处理完毕后，BlocksMap整个结构也就构建完成。
+
+NameNode在format时生成fsimage/edits/Shared Edits文件，而且它们都需要格式化并且通过clusterId保持一致。
